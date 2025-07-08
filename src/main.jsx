@@ -4,9 +4,11 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import MainLayout from './layout/MainLayout.jsx'
 import Home from './pages/Home.jsx'
 import ProductDetail from './pages/ProductDetail.jsx'
+import { CartProvider } from './hooks/useCart.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+<CartProvider>
+    <BrowserRouter>
   <Routes>
     <Route path='/' element={<MainLayout />}>
     <Route index element={<Home />} />
@@ -14,4 +16,5 @@ createRoot(document.getElementById('root')).render(
     </Route>
   </Routes>
   </BrowserRouter>
+</CartProvider>
 )
