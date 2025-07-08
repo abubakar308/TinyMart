@@ -3,56 +3,49 @@
     "id": "1",
     "title": "Wireless Headphones",
     "description": "High-quality wireless headphones with noise cancellation.",
-    "image": "https://via.placeholder.com/300x200?text=Headphones",
-    "price": 79.99
+    "image": "https://i.ibb.co/67k6Zyty/61-WOJadm8g-L-AC-SL1500.jpg",
+    "price": 150.00
   },
   {
     "id": "2",
     "title": "Smart Watch",
     "description": "Feature-rich smart watch with health tracking and notifications.",
-    "image": "https://via.placeholder.com/300x200?text=Smart+Watch",
-    "price": 129.99
+    "image": "https://i.ibb.co/w8NhjbH/images-q-tbn-ANd9-Gc-TJz-I50av-Eco-PZ-8km-DFRp7-TLez-Tktx-Oh2-PKA-s.jpg",
+    "price": 800.00
   },
   {
     "id": "3",
     "title": "Bluetooth Speaker",
     "description": "Portable Bluetooth speaker with rich sound and long battery life.",
-    "image": "https://via.placeholder.com/300x200?text=Speaker",
-    "price": 49.99
+    "image": "https://i.ibb.co/pBz9ycP3/Anker-Soundcore-Glow-Mini-Portable-Speaker-With-360-Sound.jpg",
+    "price": 120.00
   },
   {
     "id": "4",
     "title": "Gaming Mouse",
     "description": "Ergonomic RGB gaming mouse with high precision and DPI settings.",
-    "image": "https://via.placeholder.com/300x200?text=Gaming+Mouse",
-    "price": 39.99
+    "image": "https://i.ibb.co/MDZTbFqB/61-QY3-V6-A-NL-AC-SL1500.jpg",
+    "price": 200.00
   },
   {
     "id": "5",
     "title": "Mechanical Keyboard",
     "description": "Backlit mechanical keyboard ideal for typing and gaming.",
-    "image": "https://via.placeholder.com/300x200?text=Keyboard",
-    "price": 69.99
+    "image": "https://i.ibb.co/0VytcJrR/71y-Gtau-B-AL-AC-SL1500.jpg",
+    "price": 250.00
   },
   {
     "id": "6",
-    "title": "Fitness Tracker",
-    "description": "Track your steps, sleep, and workouts with this sleek tracker.",
-    "image": "https://via.placeholder.com/300x200?text=Fitness+Tracker",
-    "price": 59.99
+    "title": "Laptop Stand",
+    "description": "Ergonomic stand to elevate your laptop and improve posture.",
+    "image": "https://i.ibb.co/Kp4gctrj/SQpcc-UKSd-Hmcqeq-GBP1grl-Z6-WVXdg7-DGEDEAvnb1.jpg",
+    "price": 80.50
   },
   {
     "id": "7",
-    "title": "Laptop Stand",
-    "description": "Ergonomic stand to elevate your laptop and improve posture.",
-    "image": "https://via.placeholder.com/300x200?text=Laptop+Stand",
-    "price": 24.99
-  },
-  {
-    "id": "8",
     "title": "USB-C Hub",
     "description": "7-in-1 USB-C hub for charging, HDMI, and data transfer.",
-    "image": "https://via.placeholder.com/300x200?text=USB-C+Hub",
-    "price": 34.99
+    "image": "https://i.ibb.co/NgBKZwmy/image-a-HR0c-HM6-Ly9t-Lm1l-ZGlh-LWFt-YXpvbi5jb20va-W1h-Z2-Vz-L0kv-Nj-FRYl-M1-Mj-Vw-Z0wu-X0-FDX1-NMMT.jpg",
+    "price": 90.99
   }
 ]
