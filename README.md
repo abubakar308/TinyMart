@@ -38,26 +38,27 @@ TinyMart is a clean and responsive eCommerce UI built using React, Vite, and Tai
 
 ## 🧑‍💻 How to Run Locally
 
-1. **Clone the Repo**
-   ```bash
-   git clone https://github.com/abubakar308/TinyMart.git
-   cd TinyMart
+Follow these steps to set up and run the project on your local machine:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/abubakar308/TinyMart.git
+cd TinyMart
+
 
 ---
 
-## ⚙️ Installation & Setup
 
-Follow these steps to set up the project locally:
-
-### 1. Install Dependencies
-
-```bash
+2. Install Dependencies
+bash
 npm install
 
-Start the Development Server
-
+3. Run the Development Server
+bash
 npm run dev
 
-Visit the app in your browser at:
-
-Visit: http://localhost:5173
+4. Visit in Browser
+Open your browser and navigate to:
+arduino
+http://localhost:5173
