@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-base-100 shadow-sm items-center p-4 flex flex-col sm:flex-row justify-around">
+    <footer className="bg-white text-gray-600 border-t items-center p-4 flex flex-col sm:flex-row justify-around">
       <aside className="flex items-center gap-2">
         <svg
           width="36"
@@ -10,7 +10,7 @@ const Footer = () => {
           fill="currentColor"
           className="fill-current"
         >
-          <path d="M22.672 15.226l-2.432.811..." /> {/* Your icon path */}
+          <path d="M22.672 15.226l-2.432.811..." /> 
         </svg>
         <p>Copyright © {new Date().getFullYear()} - All rights reserved</p>
       </aside>
@@ -18,7 +18,7 @@ const Footer = () => {
       <nav className="flex gap-4 items-center justify-center mt-4 sm:mt-0">
         {/* LinkedIn */}
         <a
-          href="https://www.linkedin.com/in/mdabubakar-dev"
+          href="https://www.linkedin.com/in/abubakar308"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
@@ -43,7 +43,7 @@ const Footer = () => {
 
         {/* GitHub */}
         <a
-          href="https://github.com/mdabubakar-dev"
+          href="https://github.com/abubakar308"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
@@ -75,7 +75,7 @@ const Footer = () => {
 
         {/* Facebook */}
         <a
-          href="https://www.facebook.com/mdabubakar.dev"
+          href="https://www.facebook.com/mdabubakar308"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"

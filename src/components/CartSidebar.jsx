@@ -1,8 +1,10 @@
 import { FaTimes } from "react-icons/fa";
 import { useCart } from "../hooks/useCart";
+import { useNavigate } from "react-router";
 
 const CartSidebar = ({ isOpen, onClose }) => {
   const { cartItems, increaseQty, decreaseQty, totalAmount, clearCart } = useCart();
+  const navigate = useNavigate()
   return (
     <>
       {/* Sidebar */}
@@ -77,8 +79,10 @@ const CartSidebar = ({ isOpen, onClose }) => {
       className="space-y-4"
       onSubmit={(e) => {
         e.preventDefault();
+         clearCart(); // ✅ Clear the cart
         alert("✅ Order Placed Successfully!");
         document.getElementById("checkout_modal").close();
+          navigate("/")
       }}
     >
       {/* Name */}
@@ -106,7 +110,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
       {/* Action buttons */}
       <div className="modal-action">
-        <button type="submit" className="btn btn-primary">
+        <button clearCart type="submit" className="btn btn-primary">
           Submit Order
         </button>
         <button

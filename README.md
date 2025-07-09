@@ -1,12 +1,63 @@
-# React + Vite
+# 🛒 TinyMart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TinyMart is a clean and responsive eCommerce UI built using React, Vite, and Tailwind CSS. It features a dynamic product list, product detail pages, a cart sidebar with quantity controls, and a modal-based checkout form — all using React's Context API for global cart management.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
 
-## Expanding the ESLint configuration
+🔗 [https://tinymart.netlify.app](https://tinymart.netlify.app)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧠 Features
+
+- 📦 View products with image, title, and price
+- 🔍 Product detail page with description and Add to Cart
+- 🛒 Slide-in Cart Sidebar
+  - Quantity increase/decrease
+  - Total price calculation
+  - Cart item badge in Navbar
+- 🧾 Checkout modal with simulated form
+- 📱 Fully responsive on mobile, tablet, and desktop
+
+---
+
+## 🛠️ Tech Stack
+
+| Tech        | Purpose                    |
+|-------------|----------------------------|
+| React       | Frontend framework         |
+| Vite        | Fast dev & build tool      |
+| Tailwind CSS| Utility-first CSS          |
+| DaisyUI     | Pre-styled components      |
+| React Router| Page navigation            |
+| Context API | Global cart state handling |
+
+---
+
+## 🧑‍💻 How to Run Locally
+
+1. **Clone the Repo**
+   ```bash
+   git clone https://github.com/abubakar308/TinyMart.git
+   cd TinyMart
+
+---
+
+## ⚙️ Installation & Setup
+
+Follow these steps to set up the project locally:
+
+### 1. Install Dependencies
+
+```bash
+npm install
+
+Start the Development Server
+
+npm run dev
+
+Visit the app in your browser at:
+
+Visit: http://localhost:5173

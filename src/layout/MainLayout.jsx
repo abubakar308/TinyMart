@@ -7,7 +7,7 @@ import CartSidebar from "../components/CartSidebar";
 const MainLayout = () => {
    const [cartOpen, setCartOpen] = useState(false);
     return (
-       <div className="min-h-screen flex flex-col bg-gradient-to-b from-indigo-600/20 to-white">
+       <div className="min-h-screen flex flex-col bg-indigo-100">
     <header> 
         <Navbar toggleCart={() => setCartOpen(true)} />
       <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen()} />
