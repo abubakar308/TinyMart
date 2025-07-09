@@ -6,7 +6,7 @@ const Navbar = ({ toggleCart }) => {
   const { cartItems } = useCart();
 
   // ✅ Calculate total item of items in cart
-  const totalItem = cartItems?.reduce((sum, item) => sum + item.quantity, 0);
+  const cartLength = cartItems?.length;
 
   return (
    <div className="bg-white shadow">
@@ -18,15 +18,17 @@ const Navbar = ({ toggleCart }) => {
     {/* Links */}
     <div className="flex gap-4 items-center">
       <Link to="/" className="btn btn-sm btn-ghost">Home</Link>
-      <button onClick={toggleCart} className="btn btn-sm btn-outline btn-primary relative">
+    <Link to='/cart' className="btn btn-sm btn-ghost">Cart</Link>
+    </div>
+    {/* cart icon */}
+          <button onClick={toggleCart} className="btn btn-sm btn-outline btn-primary relative">
         <BsCart className="text-xl" />
-        {totalItem > 0 && (
+        {cartLength > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-            {totalItem}
+            {cartLength? cartLength: "0"}
           </span>
         )}
       </button>
-    </div>
   </nav>
 </div>
   );

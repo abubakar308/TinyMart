@@ -5,6 +5,7 @@ import MainLayout from './layout/MainLayout.jsx'
 import Home from './pages/Home.jsx'
 import ProductDetail from './pages/ProductDetail.jsx'
 import { CartProvider } from './hooks/useCart.jsx'
+import Cart from './pages/Cart.jsx'
 
 createRoot(document.getElementById('root')).render(
 <CartProvider>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')).render(
   <Routes>
     <Route path='/' element={<MainLayout />}>
     <Route index element={<Home />} />
+    <Route path='cart' element={<Cart />} />
     <Route path='/product/:id' element={<ProductDetail />} />
     </Route>
   </Routes>
