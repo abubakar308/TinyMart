@@ -26,30 +26,43 @@ const CartSidebar = ({ isOpen, onClose }) => {
           ) : (
             cartItems.map((item) => (
               <div
-                key={item.id}
-                className="flex items-center justify-between border-b pb-2"
-              >
-                <div>
-                  <h4 className="font-semibold">{item.title}</h4>
-                 <p>${item.price} * {item.quantity} = ${(item.price * item.quantity).toFixed(2)}</p>
+  key={item.id}
+  className="flex items-center gap-4 border-b pb-3"
+>
+  {/* ✅ Product Image */}
+  <img
+    src={item.image}
+    alt={item.title}
+    className="w-16 h-16 object-cover rounded"
+  />
 
-                </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    className="px-2 py-1 bg-indigo-200 rounded"
-                    onClick={() => decreaseQty(item.id)}
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    className="px-2 py-1 bg-indigo-200 rounded"
-                    onClick={() => increaseQty(item.id)}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
+  {/* ✅ Product Info */}
+  <div className="flex-1">
+    <h4 className="font-semibold text-sm">{item.title}</h4>
+    <p className="text-xs text-gray-500">
+      ${item.price} × {item.quantity} ={" "}
+      <span className="font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
+    </p>
+  </div>
+
+  {/* ✅ Quantity Controls */}
+  <div className="flex items-center gap-1">
+    <button
+      className="px-2 py-1 bg-indigo-200 rounded text-sm"
+      onClick={() => decreaseQty(item.id)}
+    >
+      −
+    </button>
+    <span className="px-1">{item.quantity}</span>
+    <button
+      className="px-2 py-1 bg-indigo-200 rounded text-sm"
+      onClick={() => increaseQty(item.id)}
+    >
+      +
+    </button>
+  </div>
+</div>
+
             ))
           )}
         </div>

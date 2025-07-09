@@ -4,35 +4,36 @@ import { useCart } from "../hooks/useCart";
 const ProductCard = ({ product }) => {
   const {addToCart} = useCart()
     return (
+       <div className="card w-full sm:w-[200px] bg-base-100 shadow-sm border hover:shadow-md transition-all duration-200">
+      {/* Entire card clickable for details */}
       <Link to={`/product/${product.id}`}>
-      <div key={product.id} className="card w-full sm:w-[200px] bg-base-100 shadow-sm border hover:ease-in-out transition-all">
-      <figure className="px-4 pt-4">
-        <img
-          src={product.image}
+        <figure className="px-4 pt-4">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="rounded-xl w-full h-32 object-contain"
+          />
+        </figure>
 
-          alt={product.title}
-          className="rounded-xl w-full h-32 object-contain"
-        />
-      </figure>
-
-      <div className="card-body items-center text-center p-4">
-        <h3 className="card-title text-sm font-medium text-indigo-600">{product.title}</h3>
-        <p className="text-gray-500 text-sm font-semibold">$ {product.price}</p>
-
-        <div className="card-actions mt-2">
-          
-            <button 
-             onClick={() => {
-              addToCart(product);
-               alert("✅ Product added to cart!");
-            }
-              
-            }
-             className="btn bg-indigo-200 hover:bg-indigo-500">Add to Cart</button>
+        <div className="card-body items-center text-center p-4">
+          <h3 className="card-title text-sm font-medium text-indigo-600 line-clamp-2">
+            {product.title}
+          </h3>
+          <p className="text-gray-500 text-sm font-semibold">${product.price}</p>
         </div>
-      </div>
-    </div>
       </Link>
+
+      {/* Add to Cart Button */}
+      <button
+        onClick={() => {
+          addToCart(product);
+          alert("✅ Product added to cart!");
+        }}
+        className="btn bg-indigo-400 m-2 hover:bg-indigo-600 text-white transition"
+      >
+        Add to Cart
+      </button>
+    </div>
     );
 };
 
