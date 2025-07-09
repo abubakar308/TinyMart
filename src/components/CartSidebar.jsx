@@ -13,7 +13,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
       >
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-bold">Your Cart</h2>
-          <button onClick={onClose}>
+          <button className="cursor-pointer" onClick={onClose}>
             <FaTimes />
           </button>
         </div>
@@ -29,9 +29,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
               >
                 <div>
                   <h4 className="font-semibold">{item.title}</h4>
-                  <p>
-                    ${item.price} × {item.quantity}
-                  </p>
+                 <p>${item.price} * {item.quantity} = ${(item.price * item.quantity).toFixed(2)}</p>
+
                 </div>
                 <div className="flex items-center gap-2">
                   <button
@@ -56,65 +55,72 @@ const CartSidebar = ({ isOpen, onClose }) => {
         <div className="p-4 border-t">
           <div className="flex justify-between mb-4 text-lg font-semibold">
             <span>Total:</span>
-            <span>${totalAmount}</span>
+           <span>${totalAmount.toFixed(2)}</span>
           </div>
 
-          <label
-            htmlFor="checkout-modal"
-            className={`btn btn-primary w-full ${cartItems.length === 0 && "btn-disabled"}`}
+          <button
+            onClick={() => document.getElementById("checkout_modal").showModal()}
+           className={`btn w-full ${cartItems.length === 0 ? "btn-disabled" : "btn-primary"}`}
           >
             Checkout
-          </label>
+          </button>
         </div>
       </div>
 
-
-      {/* Modal toggle checkbox - DaisyUI needs this */}
-<input type="checkbox" id="checkout-modal" className="modal-toggle" />
-
-{/* Checkout Modal */}
-<div className="modal">
-  <div className="modal-box">
-    <h3 className="font-bold text-xl mb-4">Checkout</h3>
+{/* ✅ Modal structure using <dialog> */}
+<dialog id="checkout_modal" className="modal">
+  <div className="modal-box w-11/12 max-w-lg">
+    <h3 className="font-bold text-xl mb-4 text-indigo-600">Checkout</h3>
 
     <form
-onSubmit={(e) => {
-    e.preventDefault();
-    alert("✅ Order Placed Successfully!");
-    clearCart(); // 🧹 Clears cart items
-    document.getElementById("checkout-modal").checked = false;
-  }}
+      method="dialog"
       className="space-y-4"
+      onSubmit={(e) => {
+        e.preventDefault();
+        alert("✅ Order Placed Successfully!");
+        document.getElementById("checkout_modal").close();
+      }}
     >
+      {/* Name */}
       <input
         type="text"
         placeholder="Your Name"
         className="input input-bordered w-full"
         required
       />
+
+      {/* Email */}
       <input
         type="email"
         placeholder="Email"
         className="input input-bordered w-full"
         required
       />
+
+      {/* Address */}
       <textarea
         placeholder="Address"
         className="textarea textarea-bordered w-full"
         required
-      />
+      ></textarea>
 
+      {/* Action buttons */}
       <div className="modal-action">
         <button type="submit" className="btn btn-primary">
           Submit Order
         </button>
-        <label htmlFor="checkout-modal" className="btn">
+        <button
+          type="button"
+          onClick={() => document.getElementById("checkout_modal").close()}
+          className="btn"
+        >
           Cancel
-        </label>
+        </button>
       </div>
     </form>
   </div>
-</div>
+</dialog>
+
     </>
   );
 };
