@@ -1,9 +1,11 @@
 import { FaTimes } from "react-icons/fa";
 import { useCart } from "../hooks/useCart";
 import CheckoutModal from "./shared/CheckoutModal";
+import { AiTwotoneDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const CartSidebar = ({ isOpen, onClose }) => {
-  const { cartItems, increaseQty, decreaseQty, totalAmount } = useCart();
+  const { cartItems, removeFromCart, increaseQty, decreaseQty, totalAmount } = useCart();
   return (
     <>
       {/* Sidebar */}
@@ -28,38 +30,62 @@ const CartSidebar = ({ isOpen, onClose }) => {
   key={item.id}
   className="flex items-center gap-4 border-b pb-3"
 >
-  {/* ✅ Product Image */}
+  {/* Product Image */}
   <img
     src={item.image}
     alt={item.title}
     className="w-16 h-16 object-cover rounded"
   />
 
-  {/* ✅ Product Info */}
+  {/* Product Info */}
   <div className="flex-1">
     <h4 className="font-semibold text-sm">{item.title}</h4>
     <p className="text-xs text-gray-500">
-      ${item.price} × {item.quantity} ={" "}
+      ${item.price} * {item.quantity} ={" "}
       <span className="font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
     </p>
   </div>
 
-  {/* ✅ Quantity Controls */}
+  {/* Quantity Controls */}
   <div className="flex items-center gap-1">
     <button
-      className="px-2 py-1 bg-indigo-200 rounded text-sm"
+      className="px-2 py-1 cursor-pointer bg-indigo-200 rounded text-sm"
       onClick={() => decreaseQty(item.id)}
     >
-      −
+      -
     </button>
     <span className="px-1">{item.quantity}</span>
     <button
-      className="px-2 py-1 bg-indigo-200 rounded text-sm"
+      className="px-2 py-1 cursor-pointer bg-indigo-200 rounded text-sm"
       onClick={() => increaseQty(item.id)}
     >
       +
     </button>
   </div>
+  <button 
+    onClick={() => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "This item will be removed from the cart!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          removeFromCart(item.id); // Pass correct ID
+          Swal.fire({
+            title: "Deleted!",
+            text: "Item has been removed from your cart.",
+            icon: "success",
+            timer: 1200,
+            showConfirmButton: false,
+          });
+        }
+      });
+    }}
+  className="text-red-600 cursor-pointer"> <AiTwotoneDelete /> </button>
 </div>
 
             ))
@@ -81,7 +107,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
         </div>
       </div>
 
-{/* Modal structure using <dialog> */}
+{/* Modal show using <dialog> */}
  <CheckoutModal />
 
     </>

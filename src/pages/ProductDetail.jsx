@@ -65,7 +65,7 @@ const ProductDetail = () => {
             className={`mt-4 w-fit px-6 py-2 rounded text-white transition ${
               product.availability === "Out of Stock" || inCart
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-indigo-500 hover:bg-indigo-600"
+                : "bg-indigo-500 cursor-pointer hover:bg-indigo-600"
             }`}
           >
             {product.availability === "Out of Stock"

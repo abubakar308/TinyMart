@@ -12,7 +12,7 @@ const MainLayout = () => {
         <Navbar toggleCart={() => setCartOpen(true)} />
       <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen()} />
     </header>
-      <main className="flex-1 container mx-auto p-6">
+      <main>
         <Outlet />
       </main>
     <footer>

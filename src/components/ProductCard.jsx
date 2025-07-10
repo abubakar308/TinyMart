@@ -8,6 +8,7 @@ const ProductCard = ({ product }) => {
 
     return (
        <div className="card w-full sm:w-[200px] bg-base-100 shadow-sm border hover:shadow-md transition-all duration-200">
+        
       {/* Entire card clickable for details */}
       <Link to={`/product/${product.id}`}>
         <figure className="px-4 pt-4">
