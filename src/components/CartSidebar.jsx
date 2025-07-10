@@ -1,10 +1,9 @@
 import { FaTimes } from "react-icons/fa";
 import { useCart } from "../hooks/useCart";
-import { useNavigate } from "react-router";
+import CheckoutModal from "./shared/CheckoutModal";
 
 const CartSidebar = ({ isOpen, onClose }) => {
-  const { cartItems, increaseQty, decreaseQty, totalAmount, clearCart } = useCart();
-  const navigate = useNavigate()
+  const { cartItems, increaseQty, decreaseQty, totalAmount } = useCart();
   return (
     <>
       {/* Sidebar */}
@@ -82,61 +81,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
         </div>
       </div>
 
-{/* ✅ Modal structure using <dialog> */}
-<dialog id="checkout_modal" className="modal">
-  <div className="modal-box w-11/12 max-w-lg">
-    <h3 className="font-bold text-xl mb-4 text-indigo-600">Checkout</h3>
-
-    <form
-      method="dialog"
-      className="space-y-4"
-      onSubmit={(e) => {
-        e.preventDefault();
-         clearCart(); // ✅ Clear the cart
-        alert("✅ Order Placed Successfully!");
-        document.getElementById("checkout_modal").close();
-          navigate("/")
-      }}
-    >
-      {/* Name */}
-      <input
-        type="text"
-        placeholder="Your Name"
-        className="input input-bordered w-full"
-        required
-      />
-
-      {/* Email */}
-      <input
-        type="email"
-        placeholder="Email"
-        className="input input-bordered w-full"
-        required
-      />
-
-      {/* Address */}
-      <textarea
-        placeholder="Address"
-        className="textarea textarea-bordered w-full"
-        required
-      ></textarea>
-
-      {/* Action buttons */}
-      <div className="modal-action">
-        <button clearCart type="submit" className="btn btn-primary">
-          Submit Order
-        </button>
-        <button
-          type="button"
-          onClick={() => document.getElementById("checkout_modal").close()}
-          className="btn"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
-  </div>
-</dialog>
+{/* Modal structure using <dialog> */}
+ <CheckoutModal />
 
     </>
   );

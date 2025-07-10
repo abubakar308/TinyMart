@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { useCart } from "../hooks/useCart";
+import Swal from "sweetalert2";
 
 const ProductCard = ({ product }) => {
   const {addToCart, isInCart} = useCart();
@@ -30,7 +31,13 @@ const ProductCard = ({ product }) => {
         onClick={() => {
           if (!inCart) {
             addToCart(product);
-            alert("✅ Product added to cart!");
+            Swal.fire({
+  position: "top-center",
+  icon: "success",
+  title: "Product Added to cart",
+  showConfirmButton: false,
+  timer: 1500
+});
           }
         }}
         disabled={inCart}

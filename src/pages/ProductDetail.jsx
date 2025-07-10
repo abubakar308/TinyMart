@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useCart } from "../hooks/useCart"; // ✅ Use your hook
+import Swal from "sweetalert2";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -51,7 +52,13 @@ const ProductDetail = () => {
             onClick={() => {
               if (!inCart) {
                 addToCart(product);
-                alert("✅ Product added to cart!");
+                          Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Product Added to cart",
+                showConfirmButton: false,
+                timer: 1500
+              });
               }
             }}
             disabled={inCart || product.availability === "Out of Stock"}

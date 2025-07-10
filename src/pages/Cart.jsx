@@ -1,6 +1,8 @@
 import { AiTwotoneDelete } from "react-icons/ai";
 import { useCart } from "../hooks/useCart";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
+import CheckoutModal from "../components/shared/CheckoutModal";
 
 const Cart = () => {
   const { cartItems, removeFromCart, increaseQty, decreaseQty, totalAmount } = useCart();
@@ -13,6 +15,7 @@ const Cart = () => {
         <p className="text-center text-gray-500">Your cart is empty.</p>
       ) : (
         <>
+
           {/* Desktop Table */}
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full table-auto border-collapse">
@@ -32,21 +35,43 @@ const Cart = () => {
                       <img src={item.image} alt={item.title} className="w-16 h-16 object-cover rounded" />
                       <p>{item.title}</p>
                     </td>
-                    <td className="p-3">৳ {item.price}</td>
+                    <td className="p-3">$ {item.price}</td>
                     <td className="p-3">
                       <div className="flex items-center gap-2 border rounded w-fit px-2">
-                        <button onClick={() => decreaseQty(item.id)} className="px-2 text-lg font-bold">-</button>
+                        <button onClick={() => decreaseQty(item.id)} className="px-2 text-lg cursor-pointer font-bold">-</button>
                         <span>{item.quantity}</span>
-                        <button onClick={() => increaseQty(item.id)} className="px-2 text-lg font-bold">+</button>
+                        <button onClick={() => increaseQty(item.id)} className="px-2 cursor-pointer text-lg font-bold">+</button>
                       </div>
                     </td>
-                    <td className="p-3">৳ {item.price * item.quantity}</td>
+                    <td className="p-3">$ {item.price * item.quantity}</td>
                     <td className="p-3">
-                      <button 
-                       onClick={() => removeFromCart(item.id)}
-                      className="bg-red-500 cursor-pointer text-white px-3 py-1 rounded hover:bg-red-600">
-                        <AiTwotoneDelete />
-                      </button>
+                   <button
+  onClick={() => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This item will be removed from the cart!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeFromCart(item.id); // ✅ Pass correct ID
+        Swal.fire({
+          title: "Deleted!",
+          text: "Item has been removed from your cart.",
+          icon: "success",
+          timer: 1200,
+          showConfirmButton: false,
+        });
+      }
+    });
+  }}
+  className="text-red-500 cursor-pointer text-xl"
+>
+  <AiTwotoneDelete />
+</button>
                     </td>
                   </tr>
                 ))}
@@ -62,23 +87,45 @@ const Cart = () => {
                   <img src={item.image} alt={item.title} className="w-16 h-16 object-cover rounded" />
                   <div>
                     <h3 className="text-base font-semibold">{item.title}</h3>
-                    <p className="text-sm text-gray-500">৳ {item.price}</p>
+                    <p className="text-sm text-gray-500">$ {item.price}</p>
                   </div>
                 </div>
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2 border rounded px-2">
-                    <button onClick={() => decreaseQty(item.id)} className="px-2 text-lg font-bold">-</button>
+                    <button onClick={() => decreaseQty(item.id)} className="px-2 cursor-pointer text-lg font-bold">-</button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => increaseQty(item.id)} className="px-2 text-lg font-bold">+</button>
+                    <button onClick={() => increaseQty(item.id)} className="px-2 cursor-pointer text-lg font-bold">+</button>
                   </div>
                   <div className="text-sm">
-                    Subtotal: <span className="font-medium">৳ {item.price * item.quantity}</span>
+                    Subtotal: <span className="font-medium">$ {item.price * item.quantity}</span>
                   </div>
-                  <button 
-                  onClick={() => removeFromCart(item.id)}
-                   className="text-red-500 cursor-pointer text-xl">
-                    <AiTwotoneDelete />
-                  </button>
+                <button
+  onClick={() => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This item will be removed from the cart!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeFromCart(item.id); // Pass correct ID
+        Swal.fire({
+          title: "Deleted!",
+          text: "Item has been removed from your cart.",
+          icon: "success",
+          timer: 1200,
+          showConfirmButton: false,
+        });
+      }
+    });
+  }}
+  className="text-red-500 cursor-pointer text-xl"
+>
+  <AiTwotoneDelete />
+</button>
                 </div>
               </div>
             ))}
@@ -91,16 +138,21 @@ const Cart = () => {
             </h2>
 
             <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+              <button
+               onClick={() => document.getElementById("checkout_modal").showModal()}
+              className="bg-indigo-600 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-700">
                 Checkout
               </button>
               <Link to="/">
-                <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+                <button className="bg-indigo-600 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-700">
                   Continue Shopping
                 </button>
               </Link>
             </div>
           </div>
+
+          {/* Modal structure using <dialog> */}
+ <CheckoutModal />
         </>
       )}
     </div>
