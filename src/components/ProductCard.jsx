@@ -2,7 +2,9 @@ import { Link } from "react-router";
 import { useCart } from "../hooks/useCart";
 
 const ProductCard = ({ product }) => {
-  const {addToCart} = useCart()
+  const {addToCart, isInCart} = useCart();
+  const inCart = isInCart(product.id);
+
     return (
        <div className="card w-full sm:w-[200px] bg-base-100 shadow-sm border hover:shadow-md transition-all duration-200">
       {/* Entire card clickable for details */}
@@ -24,14 +26,17 @@ const ProductCard = ({ product }) => {
       </Link>
 
       {/* Add to Cart Button */}
-      <button
+       <button
         onClick={() => {
-          addToCart(product);
-          alert("✅ Product added to cart!");
+          if (!inCart) {
+            addToCart(product);
+            alert("✅ Product added to cart!");
+          }
         }}
-        className="btn bg-indigo-400 m-2 hover:bg-indigo-600 text-white transition"
+        disabled={inCart}
+        className={`btn m-2 ${inCart ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-400 hover:bg-indigo-600"}`}
       >
-        Add to Cart
+        {inCart ? "Already in Cart" : "Add to Cart"}
       </button>
     </div>
     );

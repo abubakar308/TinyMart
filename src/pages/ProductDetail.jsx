@@ -5,7 +5,9 @@ import { useCart } from "../hooks/useCart"; // ✅ Use your hook
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const { addToCart } = useCart(); // ✅ Access addToCart
+  const { addToCart, isInCart } = useCart(); // Access addToCart
+
+
 
   useEffect(() => {
     fetch("/products.json")
@@ -17,6 +19,8 @@ const ProductDetail = () => {
   }, [id]);
 
   if (!product) return <p className="text-center text-red-400">Loading...</p>;
+
+  const inCart = isInCart(product.id);
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
@@ -43,20 +47,26 @@ const ProductDetail = () => {
 
   <p className="text-xl font-semibold text-indigo-600">Price: ${product.price}</p>
 
-  <button
-    onClick={() => {
-      addToCart(product);
-      alert("✅ Product added to cart!");
-    }}
-    disabled={product.availability === "Out of Stock"}
-    className={`mt-4 w-fit px-6 py-2 rounded text-white transition ${
-      product.availability === "Out of Stock"
-        ? "bg-gray-400 cursor-not-allowed"
-        : "bg-indigo-500 hover:bg-indigo-600 cursor-pointer"
-    }`}
-  >
-    {product.availability === "Out of Stock" ? "Out of Stock" : "Add to Cart"}
-  </button>
+ <button
+            onClick={() => {
+              if (!inCart) {
+                addToCart(product);
+                alert("✅ Product added to cart!");
+              }
+            }}
+            disabled={inCart || product.availability === "Out of Stock"}
+            className={`mt-4 w-fit px-6 py-2 rounded text-white transition ${
+              product.availability === "Out of Stock" || inCart
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-indigo-500 hover:bg-indigo-600"
+            }`}
+          >
+            {product.availability === "Out of Stock"
+              ? "Out of Stock"
+              : inCart
+              ? "Already in Cart"
+              : "Add to Cart"}
+          </button>
 </div>
       </div>
     </div>
