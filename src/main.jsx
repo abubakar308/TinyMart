@@ -6,6 +6,7 @@ import Home from './pages/Home.jsx'
 import ProductDetail from './pages/ProductDetail.jsx'
 import { CartProvider } from './hooks/useCart.jsx'
 import Cart from './pages/Cart.jsx'
+import Error from './pages/Error.jsx'
 
 createRoot(document.getElementById('root')).render(
 <CartProvider>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')).render(
     <Route path='cart' element={<Cart />} />
     <Route path='/product/:id' element={<ProductDetail />} />
     </Route>
+    <Route path="*" element={<Error />} />
   </Routes>
   </BrowserRouter>
 </CartProvider>
