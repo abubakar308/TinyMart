@@ -41,7 +41,7 @@ const ProductDetail = () => {
   <p className="text-gray-600 text-base leading-relaxed">{product.description}</p>
   
   {/* Additional Info */}
-  <p className="text-sm text-gray-500">Brand: <span className="font-medium">{product.brand}</span></p>
+  <p className="text-sm text-gray-600">Brand: <span className="font-medium">{product.brand}</span></p>
   <p className={`text-sm font-medium ${product.availability === "Out of Stock" ? "text-red-500" : "text-green-600"}`}>
     {product.availability}
   </p>

@@ -12,7 +12,7 @@ const MainLayout = () => {
         <Navbar toggleCart={() => setCartOpen(true)} />
       <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen()} />
     </header>
-      <main>
+      <main className="flex-1">
         <Outlet />
       </main>
     <footer>

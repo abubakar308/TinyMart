@@ -8,7 +8,7 @@ const Cart = () => {
   const { cartItems, removeFromCart, increaseQty, decreaseQty, totalAmount } = useCart();
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">Your Cart</h1>
 
       {cartItems.length === 0 ? (
